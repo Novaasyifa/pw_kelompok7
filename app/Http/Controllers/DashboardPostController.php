@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,9 +17,11 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.index', [
             "title" => "My Books",
-            "posts" => Post::all()
+            "posts" => Post::all(),
+            'categories' => Category::all(),
+            'genres' => Genre::all(),
         ]);
-       
+
     }
 
     /**
@@ -37,20 +40,17 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $validatedData = $request->validate([
-        //     'author' => 'required|max:255',
-        //     'title' => 'required|unique:posts',
-        //     'genre' => 'required',
-        //     'category_id' => 'required',
-        //     'price' => 'required'
+        $validatedData = $request->validate([
+            'author_id' => 'required|max:255',
+            'title' => 'required|unique:posts',
+            'genre_id' => 'required',
+            'category_id' => 'required',
+            'price' => 'required'
+        ]);
 
-        // ]);
+        Post::create($validatedData);
 
-        // $validatedData[''] = auth()->user()->id;
-        // Post::create($validatedData);
-
-        // return redirect('/dashboard/posts')->with('success', 'New book has been added!');
+        return redirect('/dashboard/posts')->with('success', 'New book has been added!');
     }
 
     /**
@@ -58,10 +58,10 @@ class DashboardPostController extends Controller
      */
     public function show(Post $post)
     {
-        // return view('dashboard.posts.show', [
-        //     "title" => "Single Post",
-        //     "post" => $post
-        // ]);
+        return view('dashboard.posts.show', [
+            "title" => "Single Post",
+            "post" => $post
+        ]);
     }
 
     /**
@@ -71,7 +71,8 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.edit', [
             "post" => $post,
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            'genres' => Genre::all()
         ]);
     }
 
@@ -81,28 +82,26 @@ class DashboardPostController extends Controller
     public function update(Request $request, Post $post)
     {
         $rules = [
-            'author' => 'required|max:255',
-            'genre' => 'required',
+            'genre_id' => 'required',
             'image' => 'image|file|max:10000',
             'category_id' => 'required',
             'price' => 'required',
             'description' => 'required'
-
         ];
 
-        
 
-        if($request->title != $post->title) {
-            $rules['title'] = 'required|unique:posts'; 
+
+        if ($request->title != $post->title) {
+            $rules['title'] = 'required|unique:posts';
         }
 
         $validatedData = $request->validate($rules);
 
-        if($request->file('image')) {
-            if($request->oldImage) {
+        if ($request->file('image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            
+
             $validatedData['image'] = $request->file('image')->store('post-images');
         }
 
@@ -118,7 +117,7 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if($post->image) {
+        if ($post->image) {
             Storage::delete($post->image);
         }
 

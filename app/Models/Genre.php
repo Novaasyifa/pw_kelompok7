@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Genre extends Model
 {
+    /** @use HasFactory<\Database\Factories\GenreFactory> */
     use HasFactory;
 
     protected $guarded = ['id'];
 
-    public function getRouteKeyName()
+    public function post()
     {
-        return 'slug';
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class, 'category_id');
+        return $this->hasMany(Post::class);
     }
 }

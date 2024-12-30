@@ -14,6 +14,7 @@ use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CetakController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\Book;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -49,12 +50,13 @@ Route::get('/navbar', function () {
 });
 
 Route::get('/', function () {
-    return view('home',
-    [
-        "title" => "Home",
-        'posts' => Post::latest()->filter(request(['search', 'category']))->paginate(8)->withQueryString()
-    ]
-);
+    return view(
+        'home',
+        [
+            "title" => "Home",
+            'posts' => Post::latest()->filter(request(['search', 'category']))->paginate(8)->withQueryString()
+        ]
+    );
 });
 
 
@@ -80,24 +82,25 @@ Route::get('/categories', [CategoryController::class, 'index']);
 
 
 
-Route::get('/MyBooks', function () {
-    return view('MyBooks',[
-        "title" => "MyBooks"
+Route::get('/Products', function () {
+    return view('Products', [
+        "title" => "Products",
+        'posts' => Post::all()
     ]);
 });
 
-Route::get('/dashboard', function() {
+Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware(AdminMiddleware::class);
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
 
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
@@ -107,15 +110,16 @@ Route::get('/auth/google/call-back', [GoogleAuthController::class, 'callbackGoog
 
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
-Route::post('/create', [PostController::class, 'store'])->name('create_post');
+Route::post('/dashboard/posts/create', [PostController::class, 'store'])->name('create_post');
 Route::get('/dashboard/posts/{post:title}/edit', [DashboardPostController::class, 'edit']);
-// Route::get('/show/{post:title}', [PostController::class, 'show'])->name('show_post');
+Route::put('/dashboard/posts/{post:title}', [DashboardPostController::class, 'update']);
+Route::get('/dashboard/show/{post:title}', [DashboardPostController::class, 'show'])->name('show_post');
 Route::get('/showHome/{post:title}', [PostController::class, 'showHome'])->name('show_postInHome');
-// Route::get('/MyBooks/{post:title}', [PostController::class, 'show'])->name('show_post');
+// Route::get('/Products/{post:title}', [PostController::class, 'show'])->name('show_post');
 
 Route::get('/cetakBuku', [CetakController::class, 'cetakBuku'])->name('cetakBuku');
 
-Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show');
 
 Route::post('/dashboard/categories', [AdminCategoryController::class, 'index'])->name('create_category');
 
@@ -146,6 +150,6 @@ Route::get('/contact', function () {
 Route::get('search', [PostController::class, 'search']);
 // Route::get('searchResult', [Post::class, 'searchResult']);
 
-Route::get('/index', [BookController::class, 'index']); 
+Route::get('/index', [BookController::class, 'index']);
 
 // test push and pull

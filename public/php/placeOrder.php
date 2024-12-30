@@ -39,10 +39,10 @@ $params = array(
 $snapToken = \Midtrans\Snap::getSnapToken($params);
 
 // if ($snapToken) {
-//     return redirect('/MyBooks')->with([
+//     return redirect('/Products')->with([
 //         'token' => $snapToken
 //     ]);
 // } else {
-//     return redirect('/MyBooks')->with('error', 'Checkout gagal');
+//     return redirect('/Products')->with('error', 'Checkout gagal');
 // }
  echo $snapToken;

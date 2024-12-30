@@ -26,8 +26,6 @@ class PostController extends Controller
         return view('posts.index', [
             "title" => "Posts",
             "posts" => Post::all(),
-            // "posts" => $posts->get()
-            "posts" => Post::latest()->filter(request(['search', 'category']))->get()
         ]);
     }
 
@@ -41,34 +39,34 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        if($request->ajax()) {
-            $output = '<section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 home ml-6">';
+        if ($request->ajax()) {
+            $output = '<section class="grid grid-cols-1 gap-3 mx-5 my-5 ml-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 home">';
             $posts = Post::where('title', 'LIKE', '%' . $request->search . '%')
-            ->orWhere('author', 'LIKE', '%' . $request->search . '%')
-            ->get();
+                ->orWhere('author', 'LIKE', '%' . $request->search . '%')
+                ->get();
 
-            if($posts) {
-                foreach($posts as $post) {
-                    $output .= '<div class="w-full max-w-[125%] border border-black rounded-lg shadow"  >'.
-                    '<div class="max-h-475px max-w-303px overflow-hidden">
-                        <img class="p-8 rounded-t-lg w-[100%]" src=" '.asset("storage/" . $post->image).' " alt=" '.$post->title.' " />
+            if ($posts) {
+                foreach ($posts as $post) {
+                    $output .= '<div class="w-full max-w-[125%] border border-black rounded-lg shadow"  >' .
+                        '<div class="overflow-hidden max-h-475px max-w-303px">
+                        <img class="p-8 rounded-t-lg w-[100%]" src=" ' . asset("storage/" . $post->image) . ' " alt=" ' . $post->title . ' " />
                     </div>
                     <div class="px-5 pb-5">
                         <ul>
                             <li>
-                                <h5 class="text-xl font-sans tracking-tight text-gray-900"> '.$post->author.' </h5>
+                                <h5 class="font-sans text-xl tracking-tight text-gray-900"> Write by ' . $post->author->username . ' </h5>
                             </li>
                             <li>
-                                <a href="/showHome/ '.$post->title.'  ">
-                                    <h3 class="text-xl font-sans hover:font-serif tracking-tight text-gray-900"> '.$post->title.' </h3>
+                                <a href="/showHome/ ' . $post->title . '  ">
+                                    <h3 class="font-sans text-xl tracking-tight text-gray-900 hover:font-serif"> ' . $post->title . ' </h3>
                                 </a>
                             </li>
                             <li>
-                                <h3 class="text-xl font-sans tracking-tight text-gray-900"> '.$post->category->name.' </h3>
+                                <h3 class="font-sans text-xl tracking-tight text-gray-900"> ' . $post->category->name . ' </h3>
                             </li>
                         </ul>
                         <div class="flex items-center justify-between">
-                            <small class="text-2xl font-bold text-gray-900">Rp. '.$post->price.' </small>
+                            <small class="text-2xl font-bold text-gray-900">Rp. ' . $post->price . ' </small>
                         </div>
                     </div>
                 </div>';
@@ -79,33 +77,28 @@ class PostController extends Controller
         }
         return 'not found';
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // return $request->file('image')->store('post-images');
-
         $validatedData = $request->validate([
-            'author' => 'required|max:255',
+            'author_id' => 'required|max:255',
             'title' => 'required|unique:posts',
-            // 'slug' => 'required|unique:posts',
-            'genre' => 'required',
-            'image' => 'image|file|max:10000',
+            'genre_id' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:10000',
             'category_id' => 'required',
             'price' => 'required',
             'description' => 'required'
 
         ]);
 
-        if($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('post-images');
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('post-images', 'public');
         }
 
-        // $validatedData['user_id'] = auth()->user()->id;
         Post::create($validatedData);
 
         return redirect('/dashboard/posts')->with('success', 'New book has been added!');
@@ -114,13 +107,6 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(Post $post)
-    // {
-    //     return view('dashboard.posts.show', [
-    //         "title" => "Single Post",
-    //         "post" => $post
-    //     ]);
-    // }
 
     public function showHome(Post $post)
     {
@@ -135,7 +121,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        
+        //
     }
 
     /**
@@ -151,9 +137,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // dd($post->all());
-        // Post::destroy($post->id);
-
-        // return redirect('/dashboard/posts')->with('success', 'book has been deleted!');
+        //
     }
 }

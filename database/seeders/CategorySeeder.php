@@ -15,24 +15,24 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        // Post::create([
-        //     'name' => 'Novel',
-        //     'slug' => 'novel'
-        // ]);
+        Category::create([
+            'name' => 'Novel',
+            'slug' => 'novel'
+        ]);
 
-        // Post::create([
-        //     'name' => 'Sains',
-        //     'slug' => 'sains'
-        // ]);
+        Category::create([
+            'name' => 'Sains',
+            'slug' => 'sains'
+        ]);
 
-        // Post::create([
-        //     'name' => 'Biografi',
-        //     'slug' => 'biografi'
-        // ]);
+        Category::create([
+            'name' => 'Biografi',
+            'slug' => 'biografi'
+        ]);
 
-        // Post::create([
-        //     'name' => 'Komik',
-        //     'slug' => 'komik'
-        // ]);
+        Category::create([
+            'name' => 'Komik',
+            'slug' => 'komik'
+        ]);
     }
 }

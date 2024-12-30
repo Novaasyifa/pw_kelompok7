@@ -37,8 +37,7 @@
         padding: 1px 5px;
         border-radius: 6px;
         font-size: 0.5rem;
-        background-color: #ff0000;
-        color: #ffffff;
+        color: #000;
     }
 
     .shopping-cart img {
@@ -141,7 +140,7 @@
 
 
 <!-- Navbar -->
-<nav class="bg-[#C1E1DC] border-gray-200 fixed w-full z-50 top-0 start-0" x-data>
+<nav class="bg-[#ffffff] border-gray-200 fixed w-full z-50 top-0 start-0" x-data>
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black"
@@ -149,31 +148,35 @@
         </a>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul
-                class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-[#C1E1DC] border-gray-700">
+                class="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 bg-[#ffffff] border-gray-700">
                 <li>
                     <a href="/"
-                        class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:p-0 hover:text-white">Home</a>
+                        class="block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:p-0 hover:text-gray-600">Home</a>
                 </li>
                 {{-- <li>
                 <a href="/about" class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 hover:text-white">About</a>
               </li> --}}
                 <li>
-                    <a href="/MyBooks"
-                        class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 hover:text-white">MyBooks</a>
+                    <a href="/Products"
+                        class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 hover:text-gray-600">Products</a>
                 </li>
                 <li>
                     <a href="/categories"
-                        class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 hover:text-white">Categories</a>
+                        class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 hover:text-gray-600">Categories</a>
                 </li>
                 <li>
-                    <a href="#" id="shopping-cart-button"
+                    <button id="shopping-cart-button"
                         class="block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:p-0 hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
-                        <span class="quantity-badge" x-show="$store.cart.quantity"
-                            x-text="$store.cart.quantity"></span><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                    </a>
+                        <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+
+                    </button>
 
                     <div class="shopping-cart">
-
                         <template x-for="(item, index) in $store.cart.items" x-key="index">
                             <div class="cart-item">
                                 <img :src="img / $ { item.image }" :alt="`item.name`">
@@ -241,10 +244,12 @@
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
                                 aria-labelledby="dropdownDefaultButton">
-                                <a href="/dashboard" type="submit"
-                                    class="block px-4 justify-start py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    Dashboard
-                                </a>
+                                @if (auth()->user()->isAdmin())
+                                    <a href="/dashboard" type="submit"
+                                        class="block px-4 justify-start py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Dashboard
+                                    </a>
+                                @endif
                                 <li>
                                     <button type="submit"
                                         class="block px-4 justify-start py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
@@ -257,7 +262,7 @@
                 @else
                     <li>
                         <a href="/login"
-                            class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 text-black md:p-0 hover:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent"><i
+                            class="block py-2 px-3 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 text-black md:p-0 hover:text-gray-600 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"><i
                                 class="fa-solid fa-arrow-right-to-bracket"></i>Login</a>
                     </li>
                 @endauth

@@ -17,13 +17,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'username',
-        'email',
-        'password',
-        'google_id',
-        'confirmPassword'
-    ];
+    // protected $fillable = [
+    //     'username',
+    //     'email',
+    //     'password',
+    //     'google_id',
+    //     'confirmPassword'
+    // ];
+
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,4 +47,19 @@ class User extends Authenticatable
         'password' => 'hashed',
         'confirmPassword' => 'hashed'
     ];
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'roleId');
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->roleId === 1;
+    }
 }

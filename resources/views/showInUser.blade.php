@@ -19,16 +19,17 @@
         <p class="text-sm text-center">{{ $post->description }}</p>
     </div>  --}}
 
-    <h1 style="font-size: 30px; text-align:center; padding-bottom:2rem;">Post By. {{ $post->author }}</h1>
+    <h1 style="font-size: 30px; text-align:center; padding-bottom:2rem;" class="mt-20">Post By.
+        {{ $post->author->username }}</h1>
 
     <section
         class="flex flex-col items-center bg-[#FFCCAC] border border-gray-200 rounded-lg max-w-5xl shadow md:flex-row mx-auto">
         @if (str_contains($post->image, 'https:'))
-            <img class="" src="{{ $post->image }}" alt="{{ $post->title }}"
-                style="width: 80%; max-width: 400px; height: 550px;">
+            <img src="{{ $post->image }}" alt="{{ $post->title }}" style="width: 80%; max-width: 400px; height: 550px;">
         @else
-            <img class="" src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
-                style="width: 80%; max-width: 400px; height: 550px;">
+            {{-- <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
+                style="width: 80%; max-width: 400px; height: 550px;"> --}}
+            <img src="{{ $post->image }}" alt="{{ $post->title }}" style="width: 80%; max-width: 400px; height: 550px;">
         @endif
         <div class="flex flex-col justify-center p-4 leading-normal text-center md:text-center">
             <h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-black">{{ $post->title }}</h5>
