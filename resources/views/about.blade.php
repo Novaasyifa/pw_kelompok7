@@ -29,11 +29,8 @@
     </h2>
     <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
         <div class="py-5 border-b border-gray-700">
-            <p class="mb-2 text-gray-600 px-5">Berikut adalah versi yang diubah untuk toko K-pop:  
-
-                ---
-                
-                **Tentang Kami**  
+            <p class="mb-2 text-gray-600 px-5">
+                Tentang Kami
                 
                 Kami adalah KMerchHub, sebuah destinasi utama bagi para penggemar K-pop yang ingin merasakan lebih dekat dunia idola favorit mereka. Dengan semangat mendukung budaya K-pop dan komunitas penggemarnya, kami menyediakan berbagai merchandise resmi dan eksklusif yang pasti akan membuat hari Anda lebih spesial.  
                 Di KMerchHub, Anda akan menemukan tim kami yang penuh dedikasi dan antusiasme. Dari penggemar K-pop hingga kolektor merchandise, setiap anggota tim memiliki satu kesamaan: cinta mendalam terhadap musik, idola, dan budaya Korea Selatan.  
