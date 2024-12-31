@@ -182,6 +182,133 @@
 
                     {{-- Akhir Modal 1 --}}
 
+                    <div class="overflow-x-auto">
+                        <table class="w-full min-w-[460px]">
+                            <thead>
+                                <tr>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">
+                                        ID
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left">
+                                        Image
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left">
+                                        Produk
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left">
+                                        Grup
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                                        Category
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                                        Agensi
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                                        Description
+                                    </th>
+                                    <th
+                                        class="text-[12px] uppercase tracking-wide font-medium text-black py-2 px-4 bg-gray-50 text-left rounded-tr-md rounded-br-md">
+                                        Aksi
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($posts as $post)
+                                <tr>
+                                    <td class="px-4 py-2">
+                                        <span class="text-[13px] font-medium text-gray-600">{{ $post->id }}</span>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        @if (Str::startsWith($post->image, 'http'))
+                                        <img src={{ $post->image }} alt={{ $post->image }}>
+                                        @else
+                                        <img src={{ asset('storage/' . $post->image) }} alt={{ $post->image }}>
+                                        @endif
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <span class="text-[13px] font-medium text-gray-600">{{ $post->title }}</span>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <span
+                                            class="text-[13px] font-medium text-gray-600">{{ $post->author->username }}</span>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <span
+                                            class="text-[13px] font-medium text-gray-600">{{ $post->category->name }}</span>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <span
+                                            class="text-[13px] font-medium text-gray-600">{{ $post->genre->name }}</span>
+                                    </td>
+                                    <td class="px-4 py-2">
+                                        <span
+                                            class="text-[13px] font-medium text-gray-600">{{ $post->description }}</span>
+                                    </td>
+                                    <td class="py-2">
+                                        <div class="flex items-center">
+                                            <span onclick="window.location.href='/dashboard/show/{{ $post->title }}'"
+                                                class="btn-watch btn-btn-watch">
+                                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
+                                                    <g stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2">
+                                                        <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                                                        <path
+                                                            d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <span
+                                                onclick="window.location.href='/dashboard/posts/{{ $post->title }}/edit'"
+                                                class="btn-edit btn-btn-edit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                                    viewBox="0 0 512 512">
+                                                    <path
+                                                        d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z" />
+                                                </svg>
+                                            </span>
+                                            <form action="/dashboard/posts/{{ $post->id }}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="btn-delete btn-btn-delete"
+                                                    onclick="return confirm('Are You Sure!!!')">
+                                                    <svg class="w-6 h-6 text-gray-800 dark:text-white"
+                                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none" viewBox="0 0 20 20">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                            {{-- <span class="btn-delete btn-btn-delete">
+                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m13 7-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                        </svg>
+                                    </span> --}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{-- <a href="/cetakBuku" target="_blank">
+                        <h1 class="flex justify-end mt-8 font-medium text-black border-black rounded-full focus:ring-4 focus:outline-none focus:ring-blue-300 dark:hover:text-blue-500 dark:bg-gray-900 dark:focus:ring-blue-80"> Cetak PDF<svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 18a.969.969 0 0 0 .933 1h12.134A.97.97 0 0 0 15 18M1 7V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.828 1h8.239A.97.97 0 0 1 15 2v5M6 1v4a1 1 0 0 1-1 1H1m0 9v-5h1.5a1.5 1.5 0 1 1 0 3H1m12 2v-5h2m-2 3h2m-8-3v5h1.375A1.626 1.626 0 0 0 10 13.375v-1.75A1.626 1.626 0 0 0 8.375 10H7Z"/>
+                          </svg>
+                        </h1>
+                    </a> --}}
+                    </div>
+
                 </div>
             </div>
         </div>
