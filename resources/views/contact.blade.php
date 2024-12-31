@@ -80,4 +80,30 @@
       .catch(error => console.error('Error!', error.message));
   });
 </script>
+
+{{-- <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzAguySZXmixsMjTvhiF_FJzoPfY8ulLQ1XM79KHXvwulKVkuU9lHZFvtRZ959X5yS1/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const btnKirim = document.querySelector('.btn-kirim')
+  const myAlert = document.querySelector('.hidden')
+
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+
+      // ketika tombol submit di klik
+      // tampilkan tombol alert
+      btnKirim.classList.toggle('hidden');
+      myAlert.classList.toggle('hidden');
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then((response => {
+        // tampilkan tombol alert
+        myAlert.classList.toggle('hidden');
+        // reset formnya
+        form.reset();
+        console.log('Success!', response);
+      }));
+      .catch(error => console.error('Error!', error.message));
+  });
+</script> --}}
 @endsection

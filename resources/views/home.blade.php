@@ -39,7 +39,7 @@
 
                 <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/img/treasure.jpg"
+                    <img src="https://picsum.photos/1200/400?random=carousel1"
                         class="absolute block object-cover w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                         alt="Library">
                 </div>

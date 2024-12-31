@@ -29,15 +29,12 @@
     </h2>
     <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
         <div class="py-5 border-b border-gray-700">
-            <p class="mb-2 text-gray-600 px-5">
-                Tentang Kami
-                
-                Kami adalah KMerchHub, sebuah destinasi utama bagi para penggemar K-pop yang ingin merasakan lebih dekat dunia idola favorit mereka. Dengan semangat mendukung budaya K-pop dan komunitas penggemarnya, kami menyediakan berbagai merchandise resmi dan eksklusif yang pasti akan membuat hari Anda lebih spesial.  
-                Di KMerchHub, Anda akan menemukan tim kami yang penuh dedikasi dan antusiasme. Dari penggemar K-pop hingga kolektor merchandise, setiap anggota tim memiliki satu kesamaan: cinta mendalam terhadap musik, idola, dan budaya Korea Selatan.  
-                Kami percaya bahwa K-pop bukan hanya musik, tetapi sebuah fenomena global yang membawa kebahagiaan dan inspirasi. Dengan semangat ini, kami berkomitmen untuk menyediakan produk-produk berkualitas yang tidak hanya menjadi kenang-kenangan, tetapi juga simbol dukungan Anda untuk artis-artis kesayangan.  
-                Terima kasih telah mengunjungi halaman "Tentang". Kami berharap Anda menemukan merchandise yang Anda cari dan mendapatkan pengalaman belanja yang menyenangkan bersama KMerchHub.  
-                Jika Anda memiliki pertanyaan atau saran, jangan ragu untuk menghubungi kami. Kami selalu siap untuk melayani dan berbagi semangat K-pop bersama Anda!  </p>
-            <p class="text-gray-600 px-5">Salam sejahtera,
+            <p class="mb-2 text-gray-600 px-5">Kami adalah toko buku, sebuah destinasi literasi yang mengedepankan kecintaan terhadap dunia tulis-menulis dan pengetahuan. Berkomitmen untuk menjadi jembatan antara penulis dan pembaca, toko buku kami berusaha menyediakan pilihan bacaan berkualitas dari berbagai genre dan topik.
+                Di kmerchhub, Anda akan menemukan tim kami yang penuh dedikasi dan bersemangat. Dari para penulis lokal hingga pembaca setia, setiap individu di sini memiliki satu kesamaan: cinta akan kata-kata dan cerita.
+                Kami percaya bahwa buku bukan hanya kumpulan halaman yang terikat, tetapi sebuah jendela ke dunia, sebuah teman setia yang selalu ada untuk Anda. Dengan semangat ini, kami berkomitmen untuk terus menyediakan bacaan yang memperkaya pikiran dan jiwa Anda.
+                Terima kasih telah mengunjungi halaman "About". Kami berharap Anda menemukan buku yang Anda cari dan dapatkan pengalaman belanja yang memuaskan bersama kmerchhub.
+                Jika Anda memiliki pertanyaan atau saran, jangan ragu untuk menghubungi kami. Kami selalu siap untuk melayani dan berbagi cinta literasi dengan Anda.</p>
+            <p class="text-gray-600 px-5">Salam literasi,
                 Tim kmerchhub ❤ </p>
         </div>
     </div>
