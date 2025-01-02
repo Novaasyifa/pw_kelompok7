@@ -19,4 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+<<<<<<< HEAD
 Route::resource('books', BookController::class);
+=======
+Route::resource('books', BookController::class);
+>>>>>>> main

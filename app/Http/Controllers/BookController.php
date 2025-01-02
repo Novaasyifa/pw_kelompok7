@@ -21,8 +21,13 @@ class BookController extends Controller
         $api = $api->json();
         $api = collect($api)->take(20);
         // dd($api->json());
+<<<<<<< HEAD
         foreach($api as $a){
             if(!Post::where('title', $a['name'])->exists()){
+=======
+        foreach ($api as $a) {
+            if (!Post::where('title', $a['name'])->exists()) {
+>>>>>>> main
                 Post::create([
                     'title' => $a['name'],
                     'author' => $a['authors'][0]['title'],
@@ -47,13 +52,18 @@ class BookController extends Controller
         return redirect('/dashboard/posts');
 
         // $posts = Post::all();
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> main
 
         // $bookResources = BookResource::collection($posts);
 
         // return $this->sendResponse($bookResources, "Successfully Get Books");
     }
 
+<<<<<<< HEAD
     public function search(Request $request){
 
         if($request->ajax()){
@@ -83,6 +93,37 @@ class BookController extends Controller
         }
     
       }
+=======
+    public function search(Request $request)
+    {
+
+        if ($request->ajax()) {
+
+            $data = Post::where('title', 'like', '%' . $request->search . '%')
+                ->orwhere('author', 'like', '%' . $request->search . '%')
+                ->get();
+
+
+            $output = '';
+            $counter = 1;
+            if (count($data) > 0) {
+                foreach ($data as $row) {
+                    $output .= '<tr>' .
+                        '<td>' . $counter++ . '</td>' .
+                        '<td>' . $row->title . '</td>' .
+                        '<td>' . $row->author . '</td>' .
+                        '</tr>';
+                }
+            } else {
+                $output .= '<tr>' .
+                    '<td colspan="7">No results found</td>' .
+                    '</tr>';
+            }
+
+            return $output;
+        }
+    }
+>>>>>>> main
 
     /**
      * Show the form for creating a new resource.
@@ -131,4 +172,8 @@ class BookController extends Controller
     {
         //
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

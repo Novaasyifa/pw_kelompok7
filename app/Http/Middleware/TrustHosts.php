@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+<<<<<<< HEAD
 use Illuminate\Http\Middleware\TrustHosts as Middleware;
 
 class TrustHosts extends Middleware
@@ -18,3 +19,20 @@ class TrustHosts extends Middleware
         ];
     }
 }
+=======
+use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
+
+class TrimStrings extends Middleware
+{
+    /**
+     * The names of the attributes that should not be trimmed.
+     *
+     * @var array<int, string>
+     */
+    protected $except = [
+        'current_password',
+        'password',
+        'password_confirmation',
+    ];
+}
+>>>>>>> main

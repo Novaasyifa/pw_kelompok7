@@ -25,4 +25,8 @@ class Storebook_genresRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -19,4 +19,8 @@ class ValidateSignature extends Middleware
         // 'utm_source',
         // 'utm_term',
     ];
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

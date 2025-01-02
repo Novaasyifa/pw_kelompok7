@@ -25,4 +25,8 @@ class UpdatebooksRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

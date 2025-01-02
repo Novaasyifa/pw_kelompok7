@@ -25,4 +25,8 @@ class StoreCategoryRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class GoogleAuthController extends Controller
 {
+<<<<<<< HEAD
     public function redirect() {
+=======
+    public function redirect()
+    {
+>>>>>>> main
         return Socialite::driver('google')->redirect();
     }
 
@@ -41,6 +46,7 @@ class GoogleAuthController extends Controller
     }
 
 
+<<<<<<< HEAD
     public function callbackGoogle() {
         // try{
             // $google_user = Socialite::driver('google')->stateless()->user();
@@ -86,10 +92,61 @@ class GoogleAuthController extends Controller
                 // return redirect()->intended('dashboard');
 
             }
+=======
+    public function callbackGoogle()
+    {
+        // try{
+        // $google_user = Socialite::driver('google')->stateless()->user();
+        // $checkUser = User::where('email', $google_user->getEmail())->first();
+
+        // $newUser = User::create([
+        //     'username' => $google_user->getName(),
+        //     'email' => $google_user->getEmail(),
+        //     'google_id'=> $google_user->getId(),
+        //     'password' => encrypt('123456dummy')
+        // ]);
+
+        // Auth::login($newUser);
+
+        // return redirect()->intended('dashboard');
+
+        $google_user = Socialite::driver('google')->user();
+        $findUser = User::where('google_id', $google_user->getId())->first();
+
+
+        if ($findUser) {
+            Auth::login($findUser);
+            return redirect()->intended('dashboard');
+        } else {
+
+            $newUser = User::create([
+                'username' => $google_user->getName(),
+                'email' => $google_user->getEmail(),
+                'google_id' => $google_user->getId(),
+                'password' => bcrypt('123456')
+            ]);
+
+            Auth::login($newUser);
+            return redirect()->intended('dashboard');
+
+            // Auth::login($newUser);
+
+            // return redirect()->intended('dashboard');
+
+            // Auth::login($checkUser);
+
+            // return redirect()->intended('dashboard');
+
+        }
+>>>>>>> main
 
         // } catch (\Exception $e) {
         //     return redirect('/login');
         //     dd($e->getMessage());
         // }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

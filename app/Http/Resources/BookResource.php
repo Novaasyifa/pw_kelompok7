@@ -22,4 +22,8 @@ class BookResource extends JsonResource
             "price" => $this->price
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
