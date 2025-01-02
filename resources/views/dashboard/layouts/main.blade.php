@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="/css/style2.css" />
 
     <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            background-color: #ffffff;
-        }
+    body {
+        font-family: "Poppins", sans-serif;
+        background-color: #d9d9d9;
+    }
     </style>
 
 

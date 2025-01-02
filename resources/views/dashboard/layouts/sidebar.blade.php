@@ -1,6 +1,6 @@
 <!-- start: Sidebar -->
-<div class="fixed left-0 top-0 w-64 h-full bg-gray-900 p-4 z-50 sidebar-menu transition-transform"
-    style="background-color: #1e1e1e">
+<div class="fixed left-0 top-0 w-64 h-full bg-gray-500 p-4 z-50 sidebar-menu transition-transform"
+    style="background-color: #d9d9d9">
     <a href="/" class="flex items-center pb-4">
         <span class="text-white font-bold ml-3">Kmerchhub</span>
     </a>
@@ -41,24 +41,24 @@
     </ul>
 
     @can('admin')
-        <h6 class="flex justify-between items-center px-3 mb-4 text-muted">
+    <h6 class="flex justify-between items-center px-3 mb-4 text-muted">
 
-            <span class="text-black font-bold">Administrator</span>
-        </h6>
+        <span class="text-black font-bold">Administrator</span>
+    </h6>
 
-        <ul class="mt-4">
-            <li class="mb-1 group:">
-                <a class="flex items-center py-2 px-4 {{ Request::is('dashboard/categories*') ? 'active' : '' }} text-gray-800 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
-                    href="/dashboard/categories">
-                    {{-- <i class="ri-home-2-line mr-3 text-lg"></i> --}}
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
-                        <path
-                            d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z" />
-                    </svg>
-                    <span class="text-sm text-black font-medium ml-4">Post Categories</span>
-                </a>
-            </li>
-        </ul>
+    <ul class="mt-4">
+        <li class="mb-1 group:">
+            <a class="flex items-center py-2 px-4 {{ Request::is('dashboard/categories*') ? 'active' : '' }} text-gray-800 hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100"
+                href="/dashboard/categories">
+                {{-- <i class="ri-home-2-line mr-3 text-lg"></i> --}}
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                    <path
+                        d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z" />
+                </svg>
+                <span class="text-sm text-black font-medium ml-4">Post Categories</span>
+            </a>
+        </li>
+    </ul>
     @endcan
 
 </div>
