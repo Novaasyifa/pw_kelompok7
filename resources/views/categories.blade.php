@@ -25,7 +25,9 @@
                             class="justify-center text-black hover:text-white border border-[#C1E1DC] bg-[#FFCCAC] focus:ring-4 focus:outline-none focus:ring-[#C1E1DC] rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:focus:ring-blue-80">{{ $category->name }}</a>
                         <a href="/categories"
                             class="justify-center text-black hover:text-white border border-[#C1E1DC] bg-[#FFCCAC] focus:ring-4 focus:outline-none focus:ring-[#C1E1DC] rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3  dark:focus:ring-blue-80">Back
-                            To All Posts</a>
+                            To 
+                            All 
+                            Posts</a>
                     @endif
                 @endforeach
             </div>
