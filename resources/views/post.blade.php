@@ -11,7 +11,7 @@
                 {{ $post->sinopsis }}
             </article>
 
-            <a href="/">Back to Home</a>
+            <a href="/">back to home</a>
         </div>
     </div>
 @endsection --}}
