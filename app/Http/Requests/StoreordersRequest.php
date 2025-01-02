@@ -25,4 +25,8 @@ class StoreordersRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

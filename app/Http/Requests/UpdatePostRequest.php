@@ -25,4 +25,8 @@ class UpdatePostRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

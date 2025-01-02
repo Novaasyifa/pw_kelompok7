@@ -74,4 +74,8 @@ class CategoryController extends Controller
     {
         //
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -2,6 +2,24 @@
 
 namespace App\Http\Middleware;
 
+<<<<<<< HEAD
+use Illuminate\Http\Middleware\TrustHosts as Middleware;
+
+class TrustHosts extends Middleware
+{
+    /**
+     * Get the host patterns that should be trusted.
+     *
+     * @return array<int, string|null>
+     */
+    public function hosts(): array
+    {
+        return [
+            $this->allSubdomainsOfApplicationUrl(),
+        ];
+    }
+}
+=======
 use Illuminate\Foundation\Http\Middleware\TrimStrings as Middleware;
 
 class TrimStrings extends Middleware
@@ -17,3 +35,4 @@ class TrimStrings extends Middleware
         'password_confirmation',
     ];
 }
+>>>>>>> main

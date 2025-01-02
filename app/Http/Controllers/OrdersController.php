@@ -70,4 +70,8 @@ class OrdersController extends Controller
     {
         //
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -25,4 +25,8 @@ class UpdategenresRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

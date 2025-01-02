@@ -25,4 +25,8 @@ class UpdateCategoryRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

@@ -25,4 +25,8 @@ class Updatebook_genresRequest extends FormRequest
             //
         ];
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

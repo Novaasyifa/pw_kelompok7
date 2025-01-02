@@ -1,6 +1,11 @@
 <!-- start: Sidebar -->
+<<<<<<< HEAD
+<div class="fixed left-0 top-0 w-64 h-full bg-gray-900 p-4 z-50 sidebar-menu transition-transform"
+    style="background-color: #1e1e1e">
+=======
 <div class="fixed left-0 top-0 w-64 h-full bg-gray-500 p-4 z-50 sidebar-menu transition-transform"
     style="background-color: #d9d9d9">
+>>>>>>> main
     <a href="/" class="flex items-center pb-4">
         <span class="text-white font-bold ml-3">Kmerchhub</span>
     </a>
